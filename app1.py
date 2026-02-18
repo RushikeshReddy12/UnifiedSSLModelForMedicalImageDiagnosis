@@ -30,7 +30,7 @@ def load_models():
         filename="finetuned_mri_model.pth"
     )
 
-    xray_model = CheXpertClassifier("ssl_chexpert_encoder.pth").to(DEVICE)
+    xray_model = CheXpertClassifier().to(DEVICE)
     xray_model.load_state_dict(torch.load(xray_path, map_location=DEVICE))
     xray_model.eval()
 
@@ -142,3 +142,4 @@ if uploaded_file:
             report = generate_mri_report(image)
 
         st.markdown(report)
+
